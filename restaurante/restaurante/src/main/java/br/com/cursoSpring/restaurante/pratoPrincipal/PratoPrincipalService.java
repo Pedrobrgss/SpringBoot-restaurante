@@ -2,7 +2,6 @@ package br.com.cursoSpring.restaurante.pratoPrincipal;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PostMapping;
 
 import lombok.RequiredArgsConstructor;
 
@@ -13,7 +12,6 @@ public class PratoPrincipalService {
     private final PratoPrincipalRepository pratoPrincipalRepository;
     private final ModelMapper modelMapper;
 
-    @PostMapping // Mapeia a requisição HTTP POST para este método
     public PratoPrincipalDTO criarPratoPrincipal(PratoPrincipalDTO dto) {
         // Converte o DTO recebido para a entidade PratoPrincipal
         PratoPrincipal pratoPrincipal = modelMapper.map(dto, PratoPrincipal.class);
