@@ -31,4 +31,6 @@ public class PratoPrincipal {
     private Sabor sabor;
     @Enumerated(EnumType.STRING)
     private Tamanho tamanho;
+    @Enumerated(EnumType.STRING)
+    private Tipo_servico tipoServico;
 }

@@ -1,0 +1,1 @@
+alter Table pratos_principais add tipo_servico VARCHAR(50);
