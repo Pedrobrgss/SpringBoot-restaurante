@@ -7,6 +7,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import lombok.RequiredArgsConstructor;
 
+import java.util.List;
+
+import org.springframework.web.bind.annotation.GetMapping;
+
 @RestController // Indica que esta classe é um controlador REST
 @RequestMapping("/pratosprincipais") // Define o endpoint base para as requisições
 @RequiredArgsConstructor // Gera automaticamente um construtor com os atributos `final`
@@ -19,4 +23,9 @@ public class PratoPrincipalController {
         pratoPrincipalService.criarPratoPrincipal(dto); // Chama o serviço para cadastrar o prato principal
     }
 
+    @GetMapping
+    public List<PratoPrincipalDTO> buscarTodos() {
+        return pratoPrincipalService.buscarTodos();
+    }
+    
 }

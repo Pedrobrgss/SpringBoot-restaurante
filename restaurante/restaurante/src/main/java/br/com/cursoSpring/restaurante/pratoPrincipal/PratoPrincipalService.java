@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
-import br.com.cursoSpring.restaurante.config.Configurations;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -12,13 +11,9 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class PratoPrincipalService {
 
-    private final Configurations configurations;
     private final PratoPrincipalRepository pratoPrincipalRepository;
     private final ModelMapper modelMapper;
 
-    PratoPrincipalService(Configurations configurations) {
-        this.configurations = configurations;
-    }
 
     public PratoPrincipalDTO criarPratoPrincipal(PratoPrincipalDTO dto) {
         // Converte o DTO recebido para a entidade PratoPrincipal
@@ -32,6 +27,9 @@ public class PratoPrincipalService {
     }
 
     public List<PratoPrincipalDTO> buscarTodos(){
-        return pratoPrincipalRepository.findAll().stream().map(p-> modelMapper.map(p,PratoPrincipalDTO.class)).collect(Collectors.toList());
+        return pratoPrincipalRepository.findAll() // Busca todos os pratos principais do banco
+        .stream() // Converte a lista em um Stream para processamento funcional
+        .map(p -> modelMapper.map(p, PratoPrincipalDTO.class)) // Converte cada entidade para DTO
+        .collect(Collectors.toList()); // Coleta os resultados em uma lista
     }
 }
