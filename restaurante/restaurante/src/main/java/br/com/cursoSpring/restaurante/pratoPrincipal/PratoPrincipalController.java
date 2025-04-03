@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
@@ -19,7 +20,7 @@ public class PratoPrincipalController {
     private final PratoPrincipalService pratoPrincipalService; // Injeta o serviço responsável pela lógica de negócios
 
     @PostMapping // Mapeia a requisição HTTP POST para este método
-    public void cadastrar(@RequestBody PratoPrincipalDTO dto) {
+    public void cadastrar(@RequestBody @Valid PratoPrincipalDTO dto) {
         pratoPrincipalService.criarPratoPrincipal(dto); // Chama o serviço para cadastrar o prato principal
     }
 
