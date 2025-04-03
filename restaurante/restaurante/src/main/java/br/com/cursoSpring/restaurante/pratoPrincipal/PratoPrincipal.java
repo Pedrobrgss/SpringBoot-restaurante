@@ -14,7 +14,7 @@ import lombok.Setter;
 
 // JPA (Java Persistence API): serve para mapear classes de entidade em tabelas de um banco de dados relacional (SQL).
 @Entity // Informa para o Jpa que essa classe é uma entidade
-@Table(name = "PratoPrincipal") // Informa o nome da tabela
+@Table(name = "pratos_principais") // Informa o nome da tabela
 //Lombok: biblioteca que reduz o boilerplate code (código repetitivo) em Java, gerando automaticamente getters, setters, construtores, toString(), equals(), e hashCode().
 @Getter //Gera automaticamente os métodos get para todos os atributos da classe.
 @Setter //Gera automaticamente os métodos set para todos os atributos da classe.    

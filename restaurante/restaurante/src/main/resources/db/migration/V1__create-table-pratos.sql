@@ -1,5 +1,5 @@
 -- Use MySQL
-CREATE TABLE IF NOT EXISTS PratosPrincipais (
+CREATE TABLE IF NOT EXISTS pratos_principais (
     id bigint not null auto_increment,
     nome VARCHAR(255) NOT NULL,
     preco DOUBLE PRECISION NOT NULL,
