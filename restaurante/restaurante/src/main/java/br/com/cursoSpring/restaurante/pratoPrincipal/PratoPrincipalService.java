@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -31,5 +33,11 @@ public class PratoPrincipalService {
         .stream() // Converte a lista em um Stream para processamento funcional
         .map(p -> modelMapper.map(p, PratoPrincipalDTO.class)) // Converte cada entidade para DTO
         .collect(Collectors.toList()); // Coleta os resultados em uma lista
+    }
+
+    public PratoPrincipalDTO buscarPorID(long id){
+        PratoPrincipal pratoPrincipal = pratoPrincipalRepository.findById(id).orElseThrow(() -> new EntityNotFoundException());
+
+        return modelMapper.map(pratoPrincipal, PratoPrincipalDTO.class);
     }
 }

@@ -1,4 +1,5 @@
 package br.com.cursoSpring.restaurante.pratoPrincipal;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -32,5 +33,9 @@ public class PratoPrincipal {
     @Enumerated(EnumType.STRING)
     private Tamanho tamanho;
     @Enumerated(EnumType.STRING)
-    private Tipo_servico tipoServico;
+    @Column(name = "servico")  
+    private Servico servico;
+    // NÃO existe mais tipoServico
+    public Servico getServico() { return servico; }
+    public void setServico(Servico servico) { this.servico = servico; }
 }

@@ -1,1 +1,1 @@
-alter Table pratos_principais add tipo_servico VARCHAR(50);
+alter Table pratos_principais add servico VARCHAR(50);

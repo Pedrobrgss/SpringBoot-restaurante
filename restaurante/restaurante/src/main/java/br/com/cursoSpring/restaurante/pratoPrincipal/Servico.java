@@ -1,6 +1,6 @@
 package br.com.cursoSpring.restaurante.pratoPrincipal;
 
-public enum Tipo_servico {
+public enum Servico {
     DELIVERY,
     PRESENCIAL
 }

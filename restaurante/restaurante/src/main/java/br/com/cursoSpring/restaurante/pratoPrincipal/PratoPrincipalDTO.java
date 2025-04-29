@@ -15,5 +15,5 @@ public class PratoPrincipalDTO {
     private boolean disponivel;
     private Sabor sabor;
     private Tamanho tamanho;
-    private Tipo_servico tipoServico;
+    private Servico servico;
 }
