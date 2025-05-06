@@ -8,6 +8,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class PratoPrincipalDTO {
+    private Long id;
     @NotBlank
     private String nome;
     @Positive

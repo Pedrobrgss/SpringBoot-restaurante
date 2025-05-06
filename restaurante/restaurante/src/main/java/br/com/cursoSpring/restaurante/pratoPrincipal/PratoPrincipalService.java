@@ -40,4 +40,12 @@ public class PratoPrincipalService {
 
         return modelMapper.map(pratoPrincipal, PratoPrincipalDTO.class);
     }
+
+    public PratoPrincipalDTO atualizarPrato(Long id, PratoPrincipalDTO dto){
+        PratoPrincipal prato = modelMapper.map(dto, PratoPrincipal.class);
+        prato.setId(id);
+        prato = pratoPrincipalRepository.save(prato);
+        return modelMapper.map(prato, PratoPrincipalDTO.class);
+    }
+
 }
