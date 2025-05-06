@@ -48,4 +48,7 @@ public class PratoPrincipalService {
         return modelMapper.map(prato, PratoPrincipalDTO.class);
     }
 
+    public void deletar(Long id){
+        pratoPrincipalRepository.deleteById(id);
+    }
 }
