@@ -1,8 +1,8 @@
 package br.com.cursoSpring.restaurante.pratoPrincipal;
 
-import java.util.List;
-import java.util.stream.Collectors;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import jakarta.persistence.EntityNotFoundException;
@@ -28,11 +28,11 @@ public class PratoPrincipalService {
         return modelMapper.map(pratoPrincipal, PratoPrincipalDTO.class);
     }
 
-    public List<PratoPrincipalDTO> buscarTodos(){
-        return pratoPrincipalRepository.findAll() // Busca todos os pratos principais do banco
-        .stream() // Converte a lista em um Stream para processamento funcional
-        .map(p -> modelMapper.map(p, PratoPrincipalDTO.class)) // Converte cada entidade para DTO
-        .collect(Collectors.toList()); // Coleta os resultados em uma lista
+    public Page<PratoPrincipalDTO> buscarTodos(Pageable paginacao){
+        return pratoPrincipalRepository
+                .findAll(paginacao)
+                .map(p->modelMapper.map(p, PratoPrincipalDTO.class)); // Busca todos os pratos principais do banco
+    
     }
 
     public PratoPrincipalDTO buscarPorID(long id){

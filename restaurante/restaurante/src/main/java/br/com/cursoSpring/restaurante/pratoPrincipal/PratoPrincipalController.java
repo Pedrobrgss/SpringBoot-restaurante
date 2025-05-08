@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RestController;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
-
-import java.util.List;
-
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,8 +30,8 @@ public class PratoPrincipalController {
     }
 
     @GetMapping
-    public List<PratoPrincipalDTO> buscarTodos() {
-        return pratoPrincipalService.buscarTodos();
+    public Page<PratoPrincipalDTO> buscarTodos(@PageableDefault(size = 10) Pageable paginacao) {
+        return pratoPrincipalService.buscarTodos(paginacao);
     }
 
     @GetMapping("/{id}")
