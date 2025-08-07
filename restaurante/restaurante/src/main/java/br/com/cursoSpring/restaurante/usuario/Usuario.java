@@ -29,7 +29,6 @@ public class Usuario implements UserDetails{
     private String password;
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        // TODO Auto-generated method stub
        return List.of(new SimpleGrantedAuthority("ROLE_USER"));
     }
     @Override

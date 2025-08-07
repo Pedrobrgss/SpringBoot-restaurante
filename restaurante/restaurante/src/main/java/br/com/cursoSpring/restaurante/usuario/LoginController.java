@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.cursoSpring.restaurante.config.TokenService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
@@ -18,13 +19,14 @@ import lombok.RequiredArgsConstructor;
 public class LoginController {
 
     private final AuthenticationManager autenticador;
+    private final TokenService tokenService;
 
     @PostMapping
-    public ResponseEntity<Void> validacaoCredenciaisUsuarios(@RequestBody @Valid CredenciaisUsuariosDTO credenciais){
+    public ResponseEntity validacaoCredenciaisUsuarios(@RequestBody @Valid CredenciaisUsuariosDTO credenciais){
         UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(credenciais.getLogin(), credenciais.getPassword());
         Authentication autenticacao = autenticador.authenticate(token);
 
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(tokenService.criarToken((Usuario) autenticacao.getPrincipal()));
     }
 
 }
