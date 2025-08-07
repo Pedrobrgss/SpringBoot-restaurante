@@ -21,7 +21,7 @@ public class LoginController {
 
     @PostMapping
     public ResponseEntity<Void> validacaoCredenciaisUsuarios(@RequestBody @Valid CredenciaisUsuariosDTO credenciais){
-        UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(credenciais.getLogin(), credenciais.getSenha());
+        UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(credenciais.getLogin(), credenciais.getPassword());
         Authentication autenticacao = autenticador.authenticate(token);
 
         return ResponseEntity.ok().build();

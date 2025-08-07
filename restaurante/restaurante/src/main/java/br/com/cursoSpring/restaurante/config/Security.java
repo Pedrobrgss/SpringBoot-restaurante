@@ -7,12 +7,16 @@ import org.springframework.security.config.annotation.authentication.configurati
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
 public class Security {
     @Bean
+    // Desabilita a proteção contra CSRF para APIs REST
+    // Configura a política de criação de sessão para STATELESS, garantindo que o servidor não mantenha estado da sessão
     public SecurityFilterChain filtroSeguranca(HttpSecurity http) throws Exception{
         http.csrf(csrf -> csrf.disable())
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
@@ -21,8 +25,14 @@ public class Security {
     }
 
     @Bean
-    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception{
+        // Retorna a classe AuthenticationManager, que é usada para fazer a autenticação do usuário. O Spring configura isso para nós.
         return authenticationConfiguration.getAuthenticationManager();
     }
 
+    @Bean
+    public PasswordEncoder passwordEncoder(){
+        // Retorna o codificador de senhas
+        return new BCryptPasswordEncoder();
+    }
 }
