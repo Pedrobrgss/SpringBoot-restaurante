@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
@@ -25,6 +26,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 @RestController // Indica que esta classe é um controlador REST
 @RequestMapping("/pratosprincipais") // Define o endpoint base para as requisições
 @RequiredArgsConstructor // Gera automaticamente um construtor com os atributos `final`
+@SecurityRequirement(name = "bearer-key")
 public class PratoPrincipalController {
 
     private final PratoPrincipalService pratoPrincipalService; // Injeta o serviço responsável pela lógica de negócios
