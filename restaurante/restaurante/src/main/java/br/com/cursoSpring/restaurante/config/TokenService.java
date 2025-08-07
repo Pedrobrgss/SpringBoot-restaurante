@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
+import com.auth0.jwt.exceptions.JWTVerificationException;
 
 import br.com.cursoSpring.restaurante.usuario.Usuario;
 
@@ -27,7 +28,23 @@ public class TokenService {
         } catch (JWTCreationException e) {
 
             throw new RuntimeException("Erro ao criar o Token", e);
-            
+
+        }
+    }
+
+    // método para validar o token 
+    public String buscarUsuarioToken(String token){
+        try {
+             Algorithm algoritmo = Algorithm.HMAC256("1234");
+
+             return JWT.require(algoritmo)
+             .withIssuer("Restaurante")
+             .build()
+             .verify(token)
+             .getSubject();
+
+        } catch (JWTVerificationException e) {
+           throw new RuntimeException("Token incorreto!");
         }
     }
 }
