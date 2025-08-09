@@ -108,7 +108,11 @@ A documentação interativa da API está disponível no seu navegador assim que 
 Use o Swagger para explorar os endpoints, entender os modelos de dados e testar as requisições diretamente pela interface.
 
 ---
+##  👤 Autor
+Feito por **Pedro Borges Alves**.
 
-## 🤝 Contribuição
+📧 Entre em contato: pedrobrgss1@gmail.com
 
-Sinta-se à vontade para contribuir com o projeto! Você pode abrir issues para relatar bugs ou sugerir melhorias, ou enviar pull requests com novas funcionalidades.
+🔗 [LinkedIn](www.linkedin.com/in/pedro-borges-alves-ab328a290)
+
+📂 [GitHub](https://github.com/Pedrobrgss)
